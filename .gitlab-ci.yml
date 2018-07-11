@@ -20,6 +20,7 @@ build_docker_image:
         services:
             - docker:dind
         script:
+            - echo "this isn't blank wtf gitlab"
             - docker info
             - docker login -u ${GITLAB_USERNAME} -p ${GITLAB_TOKEN} gitlab.sdsc.edu:4567
             - docker-compose build
