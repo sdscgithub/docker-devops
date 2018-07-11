@@ -14,7 +14,7 @@ stages:
 
 build_docker_image:
     stage: build
-    image: tmaier/docker-compsoe
+    image: tmaier/docker-compose
     variables:
         DOCKER_HOST: tcp://localhost:2375
         services:
@@ -24,4 +24,3 @@ build_docker_image:
             - docker login -u ${GITLAB_USERNAME} -p ${GITLAB_TOKEN} gitlab.sdsc.edu:4567
             - docker-compose build
             - docker-compose push
-
