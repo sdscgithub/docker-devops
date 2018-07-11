@@ -1,0 +1,27 @@
+image: golang:1.10.3-stretch
+
+before_script:
+    - uname -a
+    - whoami
+    - mkdir -p "/go/src/gitlab.sdsc.edu/${CI_PROJECT_NAMESPACE}"
+    - ln -sf "${CI_PROJECT_DIR}" "/go/src/gitlab.sdsc.edu/${CI_PROJECT_PATH}"
+    - cd "/go/src/gitlab.sdsc.edu/${CI_PROJECT_PATH}/"
+    - GITLAB_TOKEN="vYSe8_Dkyf2sQNFDnG8M"
+    - GITLAB_USERNAME="gitlab-ci-token"
+
+stages:
+    - build
+
+build_PHP_image:
+    stage: build
+    image: tmaier/docker-compsoe
+    variables:
+        DOCKER_HOST: tcp://localhost:2375
+        services:
+            - docker:dind
+        script:
+            - docker info
+            - docker login -u ${GITLAB_USERNAME} -p ${GITLAB_TOKEN} gitlab.sdsc.edu:4567
+            - docker-compose build
+            - docker-compose push
+
