@@ -23,8 +23,8 @@ build_docker_image:
     script:
       - docker info
       - docker login -u ${GITLAB_USERNAME} -p ${GITLAB_TOKEN} gitlab.sdsc.edu:4567
-      - docker-compose build
-      - docker-compose push     
+      - docker-compose build --network host
+      - docker-compose push --network host     
         
 #push_and_deploy:
 #    stage: build
