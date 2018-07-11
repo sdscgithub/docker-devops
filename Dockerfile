@@ -1,12 +1,14 @@
-ARG DOCKER_VERSION="18.03"
-ARG COMPOSE_VERSION="1.18.0" 
-ARG KUBECTL_VERSION="v1.9.5"
+#ARG DOCKER_VERSION="18.03"
+#ARG COMPOSE_VERSION="1.18.0" 
+#ARG KUBECTL_VERSION="v1.9.5"
 
-FROM alpine 
+FROM docker:18.03 
+
+RUN apk update
 
 RUN apk add --no-cache "py-pip" 
-RUN apk add --no-cache "docker" 
 RUN apk add --no-cache "git" 
+RUN apk add --no-cache "curl"
 
 RUN pip install "docker-compose" 
 #"${COMPOSE_VERSION:+==}${COMPOSE_VERSION}"
@@ -17,3 +19,6 @@ RUN apk --no-cache add gettext ca-certificates openssl \
     && chmod a+x /usr/local/bin/kubectl /usr/local/bin/dumb-init \
     && apk --no-cache del ca-certificates openssl
 
+#RUN curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose \
+#    && chmod +x /usr/local/bin/docker-compose \
+#    && ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
