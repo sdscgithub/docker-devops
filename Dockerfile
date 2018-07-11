@@ -4,9 +4,10 @@ ARG KUBECTL_VERSION="v1.9.5"
 
 FROM alpine 
 
-RUN apk add --no-cache py-pip
-RUN apk add --no-cache "docker"
-RUN apk add --no-cache git
+RUN apk add --no-cache "py-pip" 
+RUN apk add --no-cache "docker" 
+RUN apk add --no-cache "git" 
+
 RUN pip install "docker-compose${COMPOSE_VERSION:+==}${COMPOSE_VERSION}"
 
 RUN apk --no-cache add gettext ca-certificates openssl \
