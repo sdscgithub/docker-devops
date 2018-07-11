@@ -8,7 +8,8 @@ RUN apk add --no-cache "py-pip"
 RUN apk add --no-cache "docker" 
 RUN apk add --no-cache "git" 
 
-RUN pip install "docker-compose${COMPOSE_VERSION:+==}${COMPOSE_VERSION}"
+RUN pip install "docker-compose" 
+#"${COMPOSE_VERSION:+==}${COMPOSE_VERSION}"
 
 RUN apk --no-cache add gettext ca-certificates openssl \
     && wget https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 -O /usr/local/bin/dumb-init \
