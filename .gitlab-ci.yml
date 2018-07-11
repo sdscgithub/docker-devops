@@ -1,5 +1,3 @@
-image: golang:1.10.3-stretch
-
 before_script:
     - uname -a
     - whoami
@@ -11,8 +9,9 @@ before_script:
 
 stages:
     - build
+    - deploy
 
-build_docker_image:
+build_PHP_image:
     stage: build
     image: tmaier/docker-compose
     variables:
@@ -20,8 +19,19 @@ build_docker_image:
         services:
             - docker:dind
         script:
-            - echo "this isn't blank wtf gitlab"
             - docker info
             - docker login -u ${GITLAB_USERNAME} -p ${GITLAB_TOKEN} gitlab.sdsc.edu:4567
             - docker-compose build
             - docker-compose push
+
+#push_and_deploy:
+#    stage: build
+#    image: tmaier/docker-compose
+#    variables:
+#      DOCKER_HOST: tcp://localhost:2375
+#    services:
+#      - docker:dind
+#    script:
+#      - docker info
+        
+        
