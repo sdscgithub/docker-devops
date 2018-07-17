@@ -1,4 +1,4 @@
-#DOCKER_DEVOPS
+# DOCKER_DEVOPS
 
 This Dockerfile sping up an image containing docker, docker-compose, kubectl (client), and git.  For now it uses current versions for the tools, but eventually I would like to match the versions with our server versions being:  
 Docker Version: 18.03.0-ce  
