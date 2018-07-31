@@ -9,6 +9,7 @@ RUN apk update
 RUN apk add --no-cache "py-pip" 
 RUN apk add --no-cache "git" 
 RUN apk add --no-cache "curl"
+RUN apk add --no-cache "bash"
 
 RUN pip install "docker-compose" 
 #"${COMPOSE_VERSION:+==}${COMPOSE_VERSION}"
