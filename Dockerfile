@@ -12,9 +12,16 @@ RUN apk add --no-cache "curl"
 RUN apk add --no-cache bash bash-doc bash-completion
 RUN apk add --no-cache "make"
 
+#install docker compose
 RUN pip install "docker-compose" 
 #"${COMPOSE_VERSION:+==}${COMPOSE_VERSION}"
 
+#install helm
+RUN curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh \
+    && chmod 700 get_helm.sh \
+    && ./get_helm.sh
+
+#install kubectl
 RUN apk --no-cache add gettext ca-certificates openssl \
     && wget https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 -O /usr/local/bin/dumb-init \
     && wget https://storage.googleapis.com/kubernetes-release/release/v1.9.5/bin/linux/amd64/kubectl -O /usr/local/bin/kubectl \
