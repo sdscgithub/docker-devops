@@ -20,8 +20,7 @@ RUN pip install "docker-compose"
 #install helm
 RUN curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh \
     && chmod 700 get_helm.sh \
-    && ./get_helm.sh \
-    && helm init
+    && ./get_helm.sh 
 
 #install kubectl
 RUN apk --no-cache add gettext ca-certificates openssl \
