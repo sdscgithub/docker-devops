@@ -6,7 +6,7 @@ before_script:
   - mkdir -p "/go/src/gitlab.sdsc.edu/${CI_PROJECT_NAMESPACE}"
   - ln -sf "${CI_PROJECT_DIR}" "/go/src/gitlab.sdsc.edu/${CI_PROJECT_PATH}"
   - cd "/go/src/gitlab.sdsc.edu/${CI_PROJECT_PATH}/"
-  - GITLAB_TOKEN="vYSe8_Dkyf2sQNFDnG8M"
+  - GITLAB_TOKEN="MtKQXnJ6q3R_1FqxPwSy"
   - GITLAB_USERNAME="gitlab-ci-token"
         
 stages:
@@ -22,9 +22,9 @@ build_docker_image:
       - docker:dind
     script:
       - docker info
-      - docker login -u ${GITLAB_USERNAME} -p ${GITLAB_TOKEN} gitlab.sdsc.edu:4567
-      - docker build --network host -t gitlab.sdsc.edu:4567/j2dangelo/docker-devops:latest .
-      - docker push gitlab.sdsc.edu:4567/j2dangelo/docker-devops:latest     
+      - docker login -u ${GITLAB_USERNAME} -p ${GITLAB_TOKEN} registry.gitlab.com
+      - docker build --network host -t registry.gitlab.com/sdsc-rds/holonet/docker-devops:latest .
+      - docker push registry.gitlab.com/sdsc-rds/holonet/docker-devops:latest
         
 #push_and_deploy:
 #    stage: build
