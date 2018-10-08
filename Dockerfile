@@ -4,7 +4,7 @@
 
 FROM docker:18.03 
 
-RUN apk update
+#RUN apk update
 
 RUN apk add --no-cache "py-pip" 
 RUN apk add --no-cache "git" 
