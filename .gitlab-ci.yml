@@ -22,8 +22,8 @@ build_docker_image:
       - docker:dind
     script:
       - docker info
-      - ls
       - cd docker-devops
+      - ls
       - docker login -u ${GITLAB_USERNAME} -p ${CI_BUILD_TOKEN} registry.gitlab.com
       - docker-compose build
       - docker-compose push
