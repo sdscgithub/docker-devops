@@ -2,5 +2,5 @@ version: '3'
 services:
     DinD:
         build: .
-        image: registry.gitlab.com/sdsc-rds/holonet/docker-devops
+        image: registry.gitlab.com/sdsc-rds/holonet/docker-devops:test
         restart: always
