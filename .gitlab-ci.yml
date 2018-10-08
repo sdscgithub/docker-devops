@@ -25,6 +25,8 @@ build_docker_image:
       - cd docker-devops
       - ls
       - docker login -u ${GITLAB_USERNAME} -p $CI_JOB_TOKEN $CI_REGISTRY
+
+      - docker push registry.gitlab.com/sdsc-rds/holonet/docker-devops:latest
       - docker-compose build
       - docker-compose push
         #- docker build --network host -t registry.gitlab.com/sdsc-rds/holonet/docker-devops:latest .
