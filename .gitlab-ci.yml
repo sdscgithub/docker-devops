@@ -23,8 +23,10 @@ build_docker_image:
     script:
       - docker info
       - docker login -u ${GITLAB_USERNAME} -p ${CI_BUILD_TOKEN} registry.gitlab.com
-      - docker build --network host -t registry.gitlab.com/sdsc-rds/holonet/docker-devops:latest .
-      - docker push registry.gitlab.com/sdsc-rds/holonet/docker-devops:latest
+      - docker-compose build
+      - docker-compose push
+        #- docker build --network host -t registry.gitlab.com/sdsc-rds/holonet/docker-devops:latest .
+        #- docker push registry.gitlab.com/sdsc-rds/holonet/docker-devops:latest
         
 #push_and_deploy:
 #    stage: build
